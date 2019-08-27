@@ -51,13 +51,16 @@ abstract class TaskList {
         String getType = t.getType();
         TaskList doneTask;
         if(getType.equals("todo")) {
-            doneTask = new Todo(i, "[✓]", currentTask, getType);
+            doneTask = new Todo(i, "[✓]", currentTask,
+                    getType);
             a.set(i - 1, doneTask);
         } else if (getType.equals("event")) {
-            doneTask = new Event(i, "[✓]", currentTask, getType, t.getAB());
+            doneTask = new Event(i, "[✓]", currentTask,
+                    getType, t.getAB());
             a.set(i - 1, doneTask);
         } else {
-            doneTask = new Deadline(i, "[✓]", currentTask, getType, t.getAB());
+            doneTask = new Deadline(i, "[✓]", currentTask,
+                    getType, t.getAB());
             a.set(i - 1, doneTask);
         }
         System.out.println("[✓] " + currentTask);
@@ -68,7 +71,8 @@ abstract class TaskList {
         System.out.println("Got it. I've added this task:");
         a.add(t);
         System.out.println(t);
-        System.out.println("Now you have " + Integer.toString(n) + " tasks in the list.");
+        System.out.println("Now you have " + Integer.toString(n) +
+                " tasks in the list.");
     }
 
     //to delete task
@@ -77,11 +81,13 @@ abstract class TaskList {
         System.out.println(t);
         int taskNumber = t.getTaskNumber();
         a.remove(taskNumber - 1);
-        System.out.println("Now you have " + Integer.toString(a.size()) + " tasks in the list.");
+        System.out.println("Now you have " + Integer.toString(a.size()) +
+                " tasks in the list.");
     }
 
     @Override
     public String toString() {
-        return Integer.toString(taskNumber) + "." + taskCheck + " " + taskName;
+        return Integer.toString(taskNumber) +
+                "." + taskCheck + " " + taskName;
     }
 }

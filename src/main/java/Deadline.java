@@ -1,7 +1,9 @@
 public class Deadline extends TaskList {
     private String by;
 
-    public Deadline(int taskNumber, String taskCheck, String taskName, String type, String b) {
+    public Deadline(int taskNumber, String taskCheck,
+                    String taskName, String type, String b) {
+
         super(taskNumber, taskCheck, taskName, type);
         by = b;
     }
@@ -12,7 +14,8 @@ public class Deadline extends TaskList {
 
     @Override
     public String toString() {
-        return Integer.toString(getTaskNumber()) + ".[D]" + getTaskCheck() + " " + getTaskName() + by;
+        return Integer.toString(getTaskNumber()) + ".[D]"
+                + getTaskCheck() + " " + getTaskName() + by;
     }
 
 }
