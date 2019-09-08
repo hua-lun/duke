@@ -106,27 +106,30 @@ abstract class TaskList {
 
     static String markAsDone(int i, ArrayList<TaskList> a) {
         String out = "Nice! I've marked this task as done:";
-
+        Statistics s = new Statistics();
         TaskList t = a.get(i - 1);
         String currentTask = t.getTaskName();
         String getType = t.getType();
         TaskList doneTask;
         if(getType.equals("todo")) {
-
             doneTask = new Todo(i, "[✓]", currentTask,
                     getType);
             a.set(i - 1, doneTask);
+            s.addTodoDone();
         } else if (getType.equals("event")) {
             doneTask = new Event(i, "[✓]", currentTask,
                     getType, t.getAB());
             a.set(i - 1, doneTask);
+            s.addEventDone();
         } else {
             doneTask = new Deadline(i, "[✓]", currentTask,
                     getType, t.getAB());
 
             doneTask = new Todo(i, "[✓]", currentTask, getType);
             a.set(i - 1, doneTask);
+            s.addDeadlineDone();
         }
+        s.addRecords(s);
         return out + "\n" + "[✓] " + currentTask;
     }
 
@@ -144,9 +147,6 @@ abstract class TaskList {
         a.add(t);
         out = out + "\n" + t + "\n" + "Now you have " + Integer.toString(n) +
                 " tasks in the list.";
-
-        Save save = new Save();
-        save.saveFile(save, a);
 
         return out;
     }

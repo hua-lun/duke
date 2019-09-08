@@ -23,6 +23,7 @@ public class DateAndTime {
 
     public String convertDate() {
         String[] arr = date.split("/");
+        System.out.println(arr[0]);
         String day = arr[0];
         String month = arr[1];
         String year = arr[2];
@@ -78,6 +79,6 @@ public class DateAndTime {
 
     @Override
     public String toString() {
-        return convertDate() + ", " + convertTime();
+        return date + ", " + time;
     }
 }

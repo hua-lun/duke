@@ -29,7 +29,8 @@ public class Ui {
         if  (!input.equals("bye") && !input.equals("list") &&
                 !input.contains("done") && !input.contains("todo") &&
                 !input.contains("event") && !input.contains("deadline") &&
-                !input.contains("delete") && !(input.contains("find"))) {
+                !input.contains("delete") && !(input.contains("find")) &&
+                !input.contains("stats")) {
 
             assert !input.equals("bye") : "I do not know what this means.";
             assert !input.equals("list") : "I do not know what this means.";
@@ -39,6 +40,7 @@ public class Ui {
             assert !input.contains("deadline") : "I do not know what this means";
             assert !input.contains("delete") : "I do not know what this means";
             assert !input.contains("find") : "I do not know what this means";
+            assert !input.contains("stats") : "I do not know what this means";
 
             output = "☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
 
@@ -61,17 +63,29 @@ public class Ui {
         } else if (input.contains("done")) {
             return p.callDone(input, array);
         } else if (input.contains("todo")) {
-            return p.callTodo(num, input, array);
+            String outputTodo =  p.callTodo(num, input, array);
+            Save save = new Save();
+            save.saveFile(save, array);
+            return outputTodo;
         } else if (input.contains(("event"))) {
             String outputEvent = p.callEvent(input, num, array);
+            Save save = new Save();
+            save.saveFile(save, array);
             return outputEvent;
         } else if (input.contains("deadline")) {
             String outputDeadline = p.callDeadline(input, num, array);
+            Save save = new Save();
+            save.saveFile(save, array);
             return outputDeadline;
         } else if (input.contains("delete")) {
-            return p.callDelete(input, array);
+            String outputDelete = p.callDelete(input, array);
+            Save save = new Save();
+            save.saveFile(save, array);
+            return outputDelete;
         } else if (input.contains("find")) {
             return p.callFind(input, array);
+        } else if (input.equals("stats")) {
+            return Statistics.getStats();
         }
         return output;
     }
