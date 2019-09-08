@@ -148,10 +148,6 @@ public class Parser {
                 }
             }
         }
-
-        Save save = new Save();
-        save.saveFile(save, array);
-
         return out;
     }
 
