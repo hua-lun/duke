@@ -40,6 +40,7 @@ public class Ui {
             assert !input.contains("deadline") : "I do not know what this means";
             assert !input.contains("delete") : "I do not know what this means";
             assert !input.contains("find") : "I do not know what this means";
+            assert !input.contains("stats") : "I do not know what this means";
 
             output = "☹ OOPS!!! I'm sorry, but I don't know what that means :-(";
 
